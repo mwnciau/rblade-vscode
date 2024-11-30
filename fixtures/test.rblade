@@ -1,0 +1,16 @@
+<p>
+    <a class="mt-4 px-2" style="display: block;" onclick="do something">asfs</a>
+    @if(some ruby)
+        {{ "string".gsub!(/123/, "456") }}
+    @endIf
+    {!! asd !!}
+    <% String %>
+    @verbatim
+        <a class="mt-4 px-2" style="display: block;" onclick="do something">asfs</a>
+        @if(some ruby)
+            {{ "string".gsub!(/123/, "456") }}
+        @endIf
+        {!! asd !!}
+        <% String %>
+    @endverbatim
+</p>

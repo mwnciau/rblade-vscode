@@ -1,0 +1,25 @@
+{
+  "name": "rblade",
+  "displayName": "RBlade",
+  "description": "Supports the RBlade templating language for Ruby on Rails",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "rblade",
+      "aliases": ["RBlade", "rblade"],
+      "extensions": [".rblade",".html.rblade"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "rblade",
+      "scopeName": "source.rblade",
+      "path": "./syntaxes/rblade.tmLanguage.json"
+    }]
+  }
+}

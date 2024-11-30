@@ -1,0 +1,139 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Ruby RBlade",
+    "scopeName": "text.html.rblade",
+    "fileTypes": ["rblade", "html.rblade"],
+    "injections": {
+      "text.html.rblade": {
+        "patterns": [
+          { "include": "#comment" },
+          { "include": "#output" },
+          { "include": "#statement" }
+        ]
+      }
+    },
+    "patterns": [
+      { "include": "text.html.basic" }
+    ],
+    "repository": {
+      "comment": {
+        "patterns": [
+          {
+            "begin": "<%#",
+            "beginCaptures": {
+              "0": { "name": "punctuation.definition.comment.begin.rblade" }
+            },
+            "end": "%>",
+            "endCaptures": {
+              "0": { "name": "punctuation.definition.comment.end.rblade" }
+            },
+            "name": "comment.block.rblade"
+          },
+          {
+            "begin": "\\{\\{--",
+            "beginCaptures": {
+              "0": { "name": "punctuation.definition.comment.begin.rblade" }
+            },
+            "end": "--\\}\\}",
+            "endCaptures": {
+              "0": { "name": "punctuation.definition.comment.end.rblade" }
+            },
+            "name": "comment.block.rblade"
+          }
+        ]
+      },
+      "output": {
+        "patterns": [
+          {
+            "begin": "<%=?=?",
+            "beginCaptures": {
+              "0": { "name": "punctuation.section.embedded.begin.rblade" }
+            },
+            "contentName": "source.ruby.embedded.rblade",
+            "end": "%>",
+            "endCaptures": {
+              "0": { "name": "punctuation.section.embedded.end.rblade" },
+              "1": { "name": "source.ruby" }
+            },
+            "name": "macro.block.rblade.output",
+            "patterns": [
+              { "include": "source.ruby" }
+            ]
+          },
+          {
+            "begin": "\\{!!",
+            "beginCaptures": {
+              "0": { "name": "punctuation.section.embedded.begin.rblade" }
+            },
+            "contentName": "source.ruby.embedded.rblade",
+            "end": "!!\\}",
+            "endCaptures": {
+              "0": { "name": "punctuation.section.embedded.end.rblade" },
+              "1": { "name": "source.ruby" }
+            },
+            "name": "macro.block.rblade.output",
+            "patterns": [
+              { "include": "source.ruby" }
+            ]
+          },
+          {
+            "begin": "\\{\\{",
+            "beginCaptures": {
+              "0": { "name": "punctuation.section.embedded.begin.rblade" }
+            },
+            "contentName": "source.ruby.embedded.rblade",
+            "end": "\\}\\}",
+            "endCaptures": {
+              "0": { "name": "punctuation.section.embedded.end.rblade" },
+              "1": { "name": "source.ruby" }
+            },
+            "name": "macro.block.rblade.output",
+            "patterns": [
+              { "include": "source.ruby" }
+            ]
+          }
+        ]
+      },
+      "statement": {
+        "patterns": [
+          {
+            "begin": "@ruby",
+            "beginCaptures": {
+              "0": { "name": "keyword.rblade.ruby.begin" }
+            },
+            "contentName": "source.ruby.embedded.rblade",
+            "end": "@end_?ruby",
+            "endCaptures": {
+              "0": { "name": "keyword.rblade.ruby.end" },
+              "1": { "name": "source.ruby" }
+            },
+            "name": "rblade.block.ruby",
+            "patterns": [
+              { "include": "source.ruby" }
+            ]
+          },
+          {
+            "begin": "@(blank\\?|break|case|checked|class|defined\\?|disabled|else|elsif|each|each_?else|each_?with_?index|each_?with_?index_?else|empty|empty\\?|env|for|for_?else|if|method|next|nil\\?|old|once|prepend|prepend_?if|prepend_?once|present\\?|props|push|push_?if|push_?once|read_?only|required|ruby|selected|should_?render|stack|style|unless|until|verbatim|when|while)\\s*\\(",
+            "beginCaptures": {
+              "0": { "name": "keyword.rblade.statement.begin" }
+            },
+            "contentName": "source.ruby.embedded.rblade",
+            "end": "\\)",
+            "endCaptures": {
+              "0": { "name": "keyword.rblade.statement.end" },
+              "1": { "name": "source.ruby" }
+            },
+            "name": "rblade.block.statement",
+            "patterns": [
+              { "include": "source.ruby" }
+            ]
+          },
+          {
+            "match": "@(end[a-zA-Z_\\?]*|break|delete|else|empty|next|once|patch|production|put|verbatim)",
+            "contentName": "source.ruby.embedded.rblade",
+            "name": "keyword.rblade.inline.statement"
+          }
+        ]
+      }
+    }
+  }

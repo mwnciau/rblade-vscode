@@ -1,0 +1,7 @@
+services:
+  node:
+    command: sleep infinity
+    image: node:22
+    working_dir: /var/source
+    volumes:
+      - .:/var/source
